@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Rawson-Medium';
+  src: url("assets/fonts/rawson/Rawson-Medium.otf");
+  /* src: url("../fonts/GellixBlack.otf") format("embedded-opentype"), url("../fonts/GilroyBold.woff2") format("woff2"), url("../fonts/GilroyBold.woff") format("woff"), url("../fonts/GilroyBold.ttf") format("truetype"), url("../fonts/GilroyBold.svg#GilroyBold") format("svg");
+*/
+}
+
+@font-face {
+  font-family: 'Rawson-Bold';
+  src: url("assets/fonts/rawson/Rawson-Bold.otf");
+  /* src: url("../fonts/GellixBlack.otf") format("embedded-opentype"), url("../fonts/GilroyBold.woff2") format("woff2"), url("../fonts/GilroyBold.woff") format("woff"), url("../fonts/GilroyBold.ttf") format("truetype"), url("../fonts/GilroyBold.svg#GilroyBold") format("svg");
+*/
+}

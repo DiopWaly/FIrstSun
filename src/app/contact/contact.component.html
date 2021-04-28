@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-1">
+          <!-- <a class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">add</i></a> -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add" (click)="ajoutModal()">Ajouter</button>
+        </div>
+        <div class="col-md-11">
+          <div [(class)]="alt" *ngIf="messageAlert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success!</strong>{{messageAlert}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Date Naissance</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts; let index = index">
+            <td>{{contact.nom}}</td>
+            <td>{{contact.prenom}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.tel}}</td>
+            <td>{{contact.dateNais | date:'dd/MM/yyyy'}}</td>
+            <td>
+              <!-- <button class="btn btn-sm btn-warning" (click)="modalUpdate(index,contact)" data-toggle="modal" data-target="#add"> -->
+                <!-- <i class="fa fa-edit"></i>Edit -->
+              <!-- </button> -->
+              <a (click)="modalUpdate(index,contact)" data-toggle="modal" data-target="#add"><i class="material-icons we" >edit</i></a>
+              <!-- <button class="btn btn-sm btn-danger" (click)="supprimer(index)"> -->
+                <!-- <i class="fa fa-remove"></i>Delete -->
+              <!-- </button> -->
+              <a (click)="supprimer(index)"><i class="material-icons w">delete</i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="modal" #addModal id="add">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 *ngIf="action"  class="modal-title">Ajouter</h4>
+        <h4 *ngIf="!action" class="modal-title">Modifier</h4>
+        <button type="button" class="close" (click)="instancier()" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup] = "form" >
+            <div class="form-group">
+              <label for="nom">Nom :</label>
+              <input type="text" class="form-control" id="nom" formControlName="nom">
+            </div>
+            <div class="form-group">
+              <label for="prenom">Prenom :</label>
+              <input type="text" class="form-control" id="prenom" formControlName="prenom">
+            </div>
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+          </div>
+          <div class="form-group">
+              <label for="tel">Telephone:</label>
+              <input type="text" class="form-control" id="tel" formControlName="tel">
+            </div>
+            <div class="form-group">
+              <label for="dat">Date de Naissance:</label>
+              <input type="date" class="form-control" id="date_nais" formControlName="dateNais">
+            </div>
+            <div *ngIf="action" >
+              <button type="button" class="btn btn-primary btn-block " (click)="ajout()">Ajouter</button>
+            </div>
+            <div *ngIf="!action" >
+              <button type="button" class="btn btn-primary btn-block" (click)="update()">Modifier</button> 
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
